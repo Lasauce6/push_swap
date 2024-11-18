@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 10:10:08 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/11/18 15:43:15 by rbaticle         ###   ########.fr       */
+/*   Created: 2024/11/18 15:03:08 by rbaticle          #+#    #+#             */
+/*   Updated: 2024/11/18 15:33:45 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-void	ft_lstclear(t_list **lst)
-{
-	t_list	*e;
-	t_list	*e2;
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
 
-	e = *lst;
-	while (e)
-	{
-		e2 = e->next;
-		free(e);
-		e = e2;
-	}
-	*lst = 0;
-}
+#endif
