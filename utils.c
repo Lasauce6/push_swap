@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 10:15:19 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/11/20 13:47:36 by rbaticle         ###   ########.fr       */
+/*   Created: 2024/11/20 13:49:45 by rbaticle          #+#    #+#             */
+/*   Updated: 2024/11/20 13:53:27 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
+#include <unistd.h>
 
-void	ft_lstiter(t_list *lst, void (*f) (int))
+void	ft_putnbr(int n)
 {
-	while (lst)
+	long	nb;
+	char	c;
+
+	nb = n;
+	if (nb < 0)
 	{
-		f(lst->content);
-		lst = lst->next;
+		write(STDOUT_FILENO, "-", 1);
+		nb *= -1;
+	}
+	if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+	{
+		c = '0' + (nb % 10);
+		write(STDOUT_FILENO, &c, 1);
 	}
 }

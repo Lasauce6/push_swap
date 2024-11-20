@@ -4,7 +4,7 @@ NAME = push_swap
 
 LFT_DIR = ./libft	
 
-SRCS = main.c
+SRCS = main.c utils.c
 OBJS = $(SRCS:.c=.o)
 
 
@@ -12,10 +12,10 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 makelft:
-	make -C $(LFT_DIR)
+	make -C $(LFT_DIR) bonus
 
 $(NAME): makelft $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) -lft
+	$(CC) $(CFLAGS) $(OBJS) libft/libft.a -o $(NAME)
 
 clean: 
 	make clean -C $(LFT_DIR)

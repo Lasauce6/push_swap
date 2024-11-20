@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 10:15:19 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/11/20 13:47:36 by rbaticle         ###   ########.fr       */
+/*   Created: 2024/11/20 10:23:08 by rbaticle          #+#    #+#             */
+/*   Updated: 2024/11/20 13:54:03 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstiter(t_list *lst, void (*f) (int))
+int	swap(t_list	**stack)
 {
-	while (lst)
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
+	t_list	*tmp;
+
+	if (!*stack || !(*stack)->next)
+		return (1);
+	tmp = *stack;
+	*stack = (*stack)->next;
+	tmp->next = (*stack)->next;
+	(*stack)->next = tmp;
+	return (0);
+}
+
+int	push(t_list	**stack_to, t_list **stack_from)
+{
+	if (!*stack_from)
+		return (1);
+
+	return (0);
 }
