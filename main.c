@@ -6,10 +6,11 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:00:38 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/11/20 13:51:11 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/11/23 12:14:35 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "push_swap.h"
 
 int	add_to_stack(int element, t_list **stack)
@@ -20,16 +21,16 @@ int	add_to_stack(int element, t_list **stack)
 	{
 		*stack = ft_lstnew(element);
 		if (!*stack)
-			return (0);
+			return (1);
 	}
 	else
 	{
 		tmp = ft_lstnew(element);
 		if (!tmp)
-			return (0);
+			return (1);
 		ft_lstadd_back(stack, tmp);
 	}
-	return (1);
+	return (0);
 }
 
 int	parse_input(int argc, char **argv, t_list **stack_a)
@@ -40,13 +41,21 @@ int	parse_input(int argc, char **argv, t_list **stack_a)
 	i = -1;
 	while (++i < argc)
 	{
+		if (ft_strlen(argv[i]) > 11
+			|| (ft_strlen(argv[i]) > 10 && ft_isdigit(argv[i][0])))
+			return (1);
 		j = -1;
+		if (argv[i][0] == '-' || argv[i][0] == '+')
+			j++;
 		while (argv[i][++j])
 		{
 			if (!ft_isdigit(argv[i][j]))
 				return (1);
 		}
-		if (!add_to_stack(ft_atoi(argv[i]), stack_a))
+		if ((argv[i][0] == '-' && ft_atoi(argv[i]) >= 0)
+			|| (argv[i][0] != '-' && ft_atoi(argv[i]) < 0))
+			return (1);
+		if (add_to_stack(ft_atoi(argv[i]), stack_a))
 			return (1);
 	}
 	return (0);

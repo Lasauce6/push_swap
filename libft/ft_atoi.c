@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 19:26:45 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/09/25 21:56:59 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/11/23 11:46:00 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_atoi(const char *str)
 {
 	size_t	i;
-	long	n;
+	int		n;
 	int		sign;
 
 	i = 0;
