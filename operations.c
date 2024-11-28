@@ -6,11 +6,10 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:23:08 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/11/27 14:35:44 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:58:18 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "push_swap.h"
 
 int	swap(t_list **stack)
