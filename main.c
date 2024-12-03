@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:00:38 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/11/23 12:14:35 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:47:11 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ int	add_to_stack(int element, t_list **stack)
 	return (0);
 }
 
-int	parse_input(int argc, char **argv, t_list **stack_a)
+int	parse_input(char **argv, t_list **stack_a)
 {
 	int	i;
 	int	j;
 
 	i = -1;
-	while (++i < argc)
+	while (argv[++i])
 	{
 		if (ft_strlen(argv[i]) > 11
 			|| (ft_strlen(argv[i]) > 10 && ft_isdigit(argv[i][0])))
@@ -70,8 +70,14 @@ int	main(int argc, char **argv)
 	stack_a = 0;
 	if (argc > 1)
 	{
-		if (!parse_input(argc - 1, argv + 1, &stack_a))
-			ft_lstiter(stack_a, &ft_putnbr);
+		argv[argc] = 0;
+		if (argc == 2)
+		{
+			argv = ft_split(argv[1], ' ');
+			argv--;
+		}
+		if (!parse_input(argv + 1, &stack_a))
+			sort_stacks(stack_a, stack_b);
 		else
 		{
 			if (stack_a)

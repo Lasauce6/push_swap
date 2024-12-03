@@ -6,20 +6,20 @@
 #    By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/23 12:36:49 by rbaticle          #+#    #+#              #
-#    Updated: 2024/11/23 12:36:50 by rbaticle         ###   ########.fr        #
+#    Updated: 2024/12/02 16:29:57 by rbaticle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS += -Wall -Werror -Wextra
 NAME = push_swap
+RM = rm -fr
 
-LFT_DIR = ./libft	
+LFT_DIR = ./libft
+LFT = $(LFT_DIR)/libft.a
 
-SRCS = main.c utils.c
+SRCS = main.c utils.c operations.c
 OBJS = $(SRCS:.c=.o)
-
-
 
 all: $(NAME)
 
@@ -27,15 +27,22 @@ makelft:
 	@make -C $(LFT_DIR) bonus
 
 $(NAME): makelft $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) libft/libft.a -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LFT) -o $(NAME)
+
+debug: makelft
+	$(CC) $(CFLAGS) -g $(SRCS) $(LFT) -o $(NAME)
+
+fsanitize: makelft
+	$(CC) $(CFLAGS) -fsanitize=address $(SRCS) $(LFT) -o $(NAME)
 
 clean: 
 	@make clean -C $(LFT_DIR)
-	rm -fr $(OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
 	@make fclean -C $(LFT_DIR)
-	rm -fr $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
+.PHONY: re clean fclean debug fsanitize

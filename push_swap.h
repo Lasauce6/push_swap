@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:03:08 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/11/28 15:19:25 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/03 01:09:53 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
-int		swap(t_list	**stack);
 void	ft_putnbr(int n);
-int		swap(t_list **stack);
-int		push(t_list **stack_to, t_list **stack_from);
-int		rotate(t_list **stack);
-int		reverse_rotate(t_list **stack);
+int		swap(t_list **stack, char c);
+int		push(t_list **stack_to, t_list **stack_from, char c);
+int		rotate(t_list **stack, char c);
+int		reverse_rotate(t_list **stack, char c);
+int		sort_stacks(t_list *stack_a, t_list *stack_b);
+int		get_stack_max(t_list *stack);
+int		get_stack_min(t_list *stack);
 
 #endif
