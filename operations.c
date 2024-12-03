@@ -6,27 +6,27 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:23:08 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/02 19:16:26 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:42:58 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	write_operation(int type, char c)
+void	write_operation(int type, char flag)
 {
-	if (type == 1)
+	if (type == SWAP)
 		write(1, "s", 1);
-	if (type == 2)
+	if (type == PUSH)
 		write(1, "p", 1);
-	if (type == 3)
+	if (type == ROTATE)
 		write(1, "r", 1);
-	if (type == 4)
+	if (type == REVERSE_ROTATE)
 		write(1, "rr", 2);
-	write(1, &c, 1);
+	write(1, &flag, 1);
 	write(1, "\n", 1);
 }
 
-int	swap(t_list **stack, char c)
+int	swap(t_list **stack, char flag)
 {
 	t_list	*tmp;
 
@@ -36,11 +36,12 @@ int	swap(t_list **stack, char c)
 	*stack = (*stack)->next;
 	tmp->next = (*stack)->next;
 	(*stack)->next = tmp;
-	write_operation(1, c);
+	if (flag != NO_PRINT)
+		write_operation(SWAP, c);
 	return (0);
 }
 
-int	push(t_list **stack_to, t_list **stack_from, char c)
+int	push(t_list **stack_to, t_list **stack_from, char flag)
 {
 	t_list	*tmp;
 
@@ -58,11 +59,12 @@ int	push(t_list **stack_to, t_list **stack_from, char c)
 		ft_lstadd_front(stack_to, *stack_from);
 		*stack_from = tmp;
 	}
-	write_operation(2, c);
+	if (flag != NO_PRINT)
+		write_operation(PUSH, flag);
 	return (0);
 }
 
-int	rotate(t_list **stack, char c)
+int	rotate(t_list **stack, char flag)
 {
 	t_list	*tmp;
 
@@ -72,11 +74,12 @@ int	rotate(t_list **stack, char c)
 	tmp = (*stack)->next;
 	(*stack)->next = NULL;
 	*stack = tmp;
-	write_operation(3, c);
+	if (flag != NO_PRINT)
+		write_operation(PUSH, flag);
 	return (0);
 }
 
-int	reverse_rotate(t_list **stack, char c)
+int	reverse_rotate(t_list **stack, char flag)
 {
 	t_list	*prev_last;
 	t_list	*tmp;
@@ -90,6 +93,7 @@ int	reverse_rotate(t_list **stack, char c)
 	prev_last->next = NULL;
 	tmp->next = *stack;
 	*stack = tmp;
-	write_operation(4, c);
+	if (flag != NO_PRINT)
+		write_operation(PUSH, flag);
 	return (0);
 }
