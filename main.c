@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:00:38 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/02 16:47:11 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/04 11:41:47 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int argc, char **argv)
 			argv--;
 		}
 		if (!parse_input(argv + 1, &stack_a))
-			sort_stacks(stack_a, stack_b);
+			sort_stacks(&stack_a, &stack_b);
 		else
 		{
 			if (stack_a)

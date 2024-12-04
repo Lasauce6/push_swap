@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:49:45 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/02 16:57:00 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/04 13:57:10 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,30 +35,94 @@ void	ft_putnbr(int n)
 	}
 }
 
-int	get_stack_max(t_list *stack)
+t_element	*get_stack_max(t_list *stack)
 {
-	int	max;
+	int			max;
+	int			pos;
+	t_element	*e;
 
 	max = INT_MIN;
+	pos = 0;
+	e = 0;
 	while (stack)
 	{
 		if (stack->content > max)
+		{
 			max = stack->content;
+			e->pos = pos;
+			e->element = stack;
+		}
 		stack = stack->next;
+		pos++;
 	}
-	return (max);
+	return (e);
 }
 
-int	get_stack_min(t_list *stack)
+t_element	*get_stack_min(t_list *stack)
 {
-	int	min;
+	int			min;
+	int			pos;
+	t_element	*e;
 
 	min = INT_MAX;
+	pos = 0;
+	e = 0;
 	while (stack)
 	{
 		if (stack->content < min)
+		{
 			min = stack->content;
+			e->pos = pos;
+			e->element = stack;
+		}
 		stack = stack->next;
+		pos++;
 	}
-	return (min);
+	return (e);
+}
+
+t_element	*get_e_above(int val, t_list *stack)
+{
+	int			pos;
+	int			min;
+	t_element	*e;
+
+	min = INT_MAX;
+	pos = 0;
+	e = 0;
+	while (stack)
+	{
+		if (stack->content > val && val < min)
+		{
+			min = stack->content;
+			e->pos = pos;
+			e->element = stack;
+		}
+		stack = stack->next;
+		pos++;
+	}
+	return (e);
+}
+
+t_element	*get_e_bellow(int val, t_list *stack)
+{
+	int			pos;
+	int			max;
+	t_element	*e;
+
+	max = INT_MIN;
+	pos = 0;
+	e = 0;
+	while (stack)
+	{
+		if (stack->content < val && val > max)
+		{
+			max = stack->content;
+			e->pos = pos;
+			e->element = stack;
+		}
+		stack = stack->next;
+		pos++;
+	}
+	return (e);
 }
