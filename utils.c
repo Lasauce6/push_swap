@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:49:45 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/04 13:57:10 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:15:12 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,10 @@ t_element	*get_e_above(int val, t_list *stack)
 
 	min = INT_MAX;
 	pos = 0;
-	e = 0;
+	e = malloc(sizeof(t_element));
+	if (!e)
+		return (NULL);
+	e->pos = -1;
 	while (stack)
 	{
 		if (stack->content > val && val < min)
@@ -112,7 +115,10 @@ t_element	*get_e_bellow(int val, t_list *stack)
 
 	max = INT_MIN;
 	pos = 0;
-	e = 0;
+	e = malloc(sizeof(t_element));
+	if (!e)
+		return (NULL);
+	e->pos = -1;
 	while (stack)
 	{
 		if (stack->content < val && val > max)

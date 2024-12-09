@@ -1,16 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 15:00:38 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/05 17:31:30 by rbaticle         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
+#include <stdio.h>
+
+t_element	*get_target(t_list *stack_a, t_list *stack_b);
 
 int	add_to_stack(int element, t_list **stack)
 {
@@ -76,7 +67,21 @@ int	main(int argc, char **argv)
 			argv--;
 		}
 		if (!parse_input(argv + 1, &stack_a))
-			sort_stacks(&stack_a, &stack_b);
+		{
+			ft_lstiter(stack_a, &ft_putnbr);
+			write(1, "\n", 1);
+			push(&stack_b, &stack_a, PRINT_B);
+			push(&stack_b, &stack_a, PRINT_B);
+			push(&stack_b, &stack_a, PRINT_B);
+			ft_lstiter(stack_a, &ft_putnbr);
+			write(1, "\n", 1);
+			ft_lstiter(stack_b, &ft_putnbr);
+			write(1, "\n", 1);
+			t_element *e = get_target(stack_a, stack_b);
+			if (e)
+				printf("%d\n", e->pos);
+			free(e);
+		}
 		else
 		{
 			if (stack_a)

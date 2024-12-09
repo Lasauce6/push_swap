@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:23:08 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/03 14:42:58 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:27:34 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	swap(t_list **stack, char flag)
 	tmp->next = (*stack)->next;
 	(*stack)->next = tmp;
 	if (flag != NO_PRINT)
-		write_operation(SWAP, c);
+		write_operation(SWAP, flag);
 	return (0);
 }
 

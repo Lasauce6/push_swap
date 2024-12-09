@@ -6,7 +6,7 @@
 #    By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/23 12:36:49 by rbaticle          #+#    #+#              #
-#    Updated: 2024/12/02 16:29:57 by rbaticle         ###   ########.fr        #
+#    Updated: 2024/12/05 15:55:28 by rbaticle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ RM = rm -fr
 LFT_DIR = ./libft
 LFT = $(LFT_DIR)/libft.a
 
-SRCS = main.c utils.c operations.c
+SRCS = main.c utils.c operations.c \
+	   operations_2.c best_element.c sort.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
