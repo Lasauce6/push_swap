@@ -6,39 +6,25 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:55:43 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/10 12:13:41 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:19:30 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_element	*get_target(t_list *stack_a, t_list *stack_b)
+t_element	*get_target(int val_a, t_list *stack_b)
 {
-	int			pos;
 	t_element	*target;
-	t_element	*e;
 
-	pos = 0;
-	target = malloc(sizeof(t_element));
+	target = get_e_bellow(val_a, stack_b);
 	if (!target)
-		return (0);
-	target->element = stack_b;
-	target->pos = pos;
-	e = get_e_above(stack_a->content, stack_b);
-	if (!e)
-		return (free(target), NULL);
-	while (stack_b && (e->pos != -1 || e->pos != pos - 1))
+		return (NULL);
+	if (target->pos == -1)
 	{
-		stack_b = stack_b->next;
-		free(e);
-		e = get_e_above(stack_a->content, stack_b);
-		if (!e)
-			return (free(target), NULL);
-		pos++;
+		free(target);
+		target = get_stack_max(stack_b);
 	}
-	target->element = stack_b;
-	target->pos = pos;
-	return (free(e), target);
+	return (target);
 }
 
 static void	next_element_iter_stack_friend(t_list **stack_a, int *pos)
@@ -47,6 +33,7 @@ static void	next_element_iter_stack_friend(t_list **stack_a, int *pos)
 	(*pos)++;
 }
 
+#include <stdio.h>
 static int	iter_stack(t_best_e **best_element, t_list *stack_a,
 					t_list *stack_b, int size_a)
 {
@@ -58,12 +45,18 @@ static int	iter_stack(t_best_e **best_element, t_list *stack_a,
 	cost = 0;
 	while (stack_a)
 	{
-		target = get_target(stack_a, stack_b);
+		target = get_target(stack_a->content, stack_b);
 		if (!target)
 			return (1);
+		printf("element : %d target pos %d pos %d size_a %d size_b %d\n", stack_a->content, target->pos, pos, size_a, ft_lstsize(stack_b));
 		cost = get_cost(target->pos, pos, size_a, ft_lstsize(stack_b));
+		printf("cost pos %d: %d\n", pos, cost);
 		if (cost < (*best_element)->cost)
 		{
+			ft_lstiter(stack_b, &ft_putnbr);
+			write(1, "\n", 1);
+			ft_lstiter(stack_a, &ft_putnbr);
+			printf("\ntarget : %d\ne->pos = %d\n", target->pos, pos);
 			free((*best_element)->target);
 			(*best_element)->element = stack_a;
 			(*best_element)->pos = pos;

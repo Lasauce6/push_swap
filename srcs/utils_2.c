@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 10:48:18 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/10 12:13:37 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:45:54 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	is_sorted(t_list *stack)
 {
 	if (ft_lstsize(stack) <= 1)
 		return (1);
-	while (stack <= stack->next)
+	while (stack->next && stack->content <= stack->next->content)
 		stack = stack->next;
 	if (stack->next)
 		return (0);
@@ -49,7 +49,7 @@ int	is_rev_sorted(t_list *stack)
 {
 	if (ft_lstsize(stack) <= 1)
 		return (1);
-	while (stack >= stack->next)
+	while (stack->next && stack->content >= stack->next->content)
 		stack = stack->next;
 	if (stack->next)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:00:38 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/10 12:14:00 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:43:17 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ int	main(int argc, char **argv)
 			if (sort_stacks(&stack_a, &stack_b))
 				ft_putstr_fd("Error\n", STDERR_FILENO);
 			ft_lstiter(stack_a, &ft_putnbr);
+			write(1, "\n", 1);
+			ft_lstiter(stack_b, &ft_putnbr);
 			free_stacks(stack_a, stack_b);
 		}
 		else

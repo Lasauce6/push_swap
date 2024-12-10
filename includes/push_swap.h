@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:03:08 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/10 12:13:04 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:06:25 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,11 @@ int			reverse_rotate_both(t_list **stack_a, t_list **stack_b);
 // Sort
 int			sort_stacks(t_list **stack_a, t_list **stack_b);
 
+// Push elements
+int			push_to_b(t_list **stack_a, t_list **stack_b, t_best_e *e);
+
 // Best_element
-t_element	*get_target(t_list *stack_a, t_list *stack_b);
+t_element	*get_target(int val_a, t_list *stack_b);
 t_best_e	*get_best_element(t_list *stack_a, t_list *stack_b);
 
 // Get cost
