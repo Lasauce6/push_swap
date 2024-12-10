@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:55:43 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/06 17:31:21 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:28:00 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,16 @@ int	get_cost(t_element *target, t_list *stack_a, t_element *e_to_push,
 			t_list *stack_b)
 {
 	int	cost;
+	int	t_pos;
+	int	e_pos;
 
 	cost = 0;
+	t_pos = target->pos;
+	e_pos = e_to_push->pos;
+	if (t_pos > ft_lstsize(stack_b) / 2 && e_pos > ft_lstsize(stack_a) / 2)
+	{
+
+	}
 	//TODO: GET THE COST
 	return (cost);
 }
@@ -93,12 +101,7 @@ t_element	*get_best_element(t_list *stack_a, t_list *stack_b)
 {
 	t_element	*best_element;
 	t_element	*e;
-	int			pos;
-	int			cost;
-	int			temp_cost;
 
-	pos = 0;
-	cost = 0;
 	best_element = malloc(sizeof(t_element));
 	if (!best_element)
 		return (NULL);

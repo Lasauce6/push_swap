@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:00:38 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/05 17:31:30 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:47:41 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,14 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		argv[argc] = 0;
-		if (argc == 2)
-		{
-			argv = ft_split(argv[1], ' ');
-			argv--;
-		}
 		if (!parse_input(argv + 1, &stack_a))
-			sort_stacks(&stack_a, &stack_b);
+		{
+			ft_lstiter(stack_a, &ft_putnbr);
+			write(1, "\n", 1);
+			if (sort_stacks(&stack_a, &stack_b))
+				ft_putstr_fd("Error\n", STDERR_FILENO);
+			ft_lstiter(stack_a, &ft_putnbr);
+		}
 		else
 		{
 			if (stack_a)

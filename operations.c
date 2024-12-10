@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:23:08 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/05 14:27:34 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:41:47 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	rotate(t_list **stack, char flag)
 	(*stack)->next = NULL;
 	*stack = tmp;
 	if (flag != NO_PRINT)
-		write_operation(PUSH, flag);
+		write_operation(ROTATE, flag);
 	return (0);
 }
 
@@ -94,6 +94,6 @@ int	reverse_rotate(t_list **stack, char flag)
 	tmp->next = *stack;
 	*stack = tmp;
 	if (flag != NO_PRINT)
-		write_operation(PUSH, flag);
+		write_operation(REVERSE_ROTATE, flag);
 	return (0);
 }

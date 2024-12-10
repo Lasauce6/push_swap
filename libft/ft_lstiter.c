@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 10:15:19 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/11/20 13:47:36 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:52:16 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ft_lstiter(t_list *lst, void (*f) (int))
 	while (lst)
 	{
 		f(lst->content);
+		write(1, " ", 1);
 		lst = lst->next;
 	}
 }
