@@ -6,11 +6,11 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:00:38 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/09 21:47:41 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:14:00 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
 int	add_to_stack(int element, t_list **stack)
 {
@@ -60,6 +60,24 @@ int	parse_input(char **argv, t_list **stack_a)
 	return (0);
 }
 
+static void	free_stacks(t_list *stack_a, t_list *stack_b)
+{
+	t_list	*tmp;
+
+	while (stack_a)
+	{
+		tmp = stack_a->next;
+		free(stack_a);
+		stack_a = tmp;
+	}
+	while (stack_b)
+	{
+		tmp = stack_b->next;
+		free(stack_b);
+		stack_b = tmp;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
@@ -77,6 +95,7 @@ int	main(int argc, char **argv)
 			if (sort_stacks(&stack_a, &stack_b))
 				ft_putstr_fd("Error\n", STDERR_FILENO);
 			ft_lstiter(stack_a, &ft_putnbr);
+			free_stacks(stack_a, stack_b);
 		}
 		else
 		{

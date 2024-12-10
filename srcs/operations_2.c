@@ -6,11 +6,11 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:04:24 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/03 14:39:01 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:13:15 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int	swap_both(t_list **stack_a, t_list **stack_b)
 {

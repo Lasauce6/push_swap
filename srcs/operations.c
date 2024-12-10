@@ -6,11 +6,11 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 10:23:08 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/09 21:41:47 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:12:52 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	write_operation(int type, char flag)
 {

@@ -6,11 +6,11 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 13:49:45 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/09 21:51:36 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:13:29 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	ft_putnbr(int n)
 {

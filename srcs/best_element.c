@@ -6,11 +6,11 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:55:43 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/09 21:28:00 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:13:41 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 t_element	*get_target(t_list *stack_a, t_list *stack_b)
 {
@@ -41,75 +41,54 @@ t_element	*get_target(t_list *stack_a, t_list *stack_b)
 	return (free(e), target);
 }
 
-int	get_cost(t_element *target, t_list *stack_a, t_element *e_to_push,
-			t_list *stack_b)
-{
-	int	cost;
-	int	t_pos;
-	int	e_pos;
-
-	cost = 0;
-	t_pos = target->pos;
-	e_pos = e_to_push->pos;
-	if (t_pos > ft_lstsize(stack_b) / 2 && e_pos > ft_lstsize(stack_a) / 2)
-	{
-
-	}
-	//TODO: GET THE COST
-	return (cost);
-}
-
-static void	next_element_iter_stack_friend(t_list **stack_a,
-		int *pos, t_element **target)
+static void	next_element_iter_stack_friend(t_list **stack_a, int *pos)
 {
 	*stack_a = (*stack_a)->next;
 	(*pos)++;
-	free(*target);
 }
 
-static int	iter_stack(t_element **best_element, t_list *stack_a,
-						t_list *stack_b, t_element **e)
+static int	iter_stack(t_best_e **best_element, t_list *stack_a,
+					t_list *stack_b, int size_a)
 {
 	t_element	*target;
-	t_list		*stack_a_cpy;
 	int			pos;
 	int			cost;
 
 	pos = 0;
 	cost = 0;
-	stack_a_cpy = stack_a;
 	while (stack_a)
 	{
 		target = get_target(stack_a, stack_b);
 		if (!target)
 			return (1);
-		(*e)->pos = pos;
-		(*e)->element = stack_a;
-		cost = get_cost(target, stack_a_cpy, *e, stack_b);
+		cost = get_cost(target->pos, pos, size_a, ft_lstsize(stack_b));
 		if (cost < (*best_element)->cost)
 		{
+			free((*best_element)->target);
 			(*best_element)->element = stack_a;
 			(*best_element)->pos = pos;
 			(*best_element)->cost = cost;
+			(*best_element)->target = target;
 		}
-		next_element_iter_stack_friend(&stack_a, &pos, &target);
+		else
+			free(target);
+		next_element_iter_stack_friend(&stack_a, &pos);
 	}
 	return (0);
 }
 
-t_element	*get_best_element(t_list *stack_a, t_list *stack_b)
+t_best_e	*get_best_element(t_list *stack_a, t_list *stack_b)
 {
-	t_element	*best_element;
-	t_element	*e;
+	t_best_e	*best_element;
 
-	best_element = malloc(sizeof(t_element));
+	best_element = malloc(sizeof(t_best_e));
 	if (!best_element)
 		return (NULL);
-	best_element->cost = INT_MAX;
-	e = malloc(sizeof(t_element));
-	if (!e)
+	best_element->target = malloc(sizeof(t_element));
+	if (!best_element->target)
 		return (free(best_element), NULL);
-	if (!iter_stack(&best_element, stack_a, stack_b, &e))
-		return (free(best_element), free(e), NULL);
+	best_element->cost = INT_MAX;
+	if (iter_stack(&best_element, stack_a, stack_b, ft_lstsize(stack_a)))
+		return (free(best_element->target), free(best_element), NULL);
 	return (best_element);
 }
