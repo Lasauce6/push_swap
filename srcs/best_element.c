@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:55:43 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/10 15:19:30 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:20:16 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,9 @@ static int	iter_stack(t_best_e **best_element, t_list *stack_a,
 		target = get_target(stack_a->content, stack_b);
 		if (!target)
 			return (1);
-		printf("element : %d target pos %d pos %d size_a %d size_b %d\n", stack_a->content, target->pos, pos, size_a, ft_lstsize(stack_b));
 		cost = get_cost(target->pos, pos, size_a, ft_lstsize(stack_b));
-		printf("cost pos %d: %d\n", pos, cost);
-		if (cost < (*best_element)->cost)
+		if (cost < (*best_element)->cost && cost != -1)
 		{
-			ft_lstiter(stack_b, &ft_putnbr);
-			write(1, "\n", 1);
-			ft_lstiter(stack_a, &ft_putnbr);
-			printf("\ntarget : %d\ne->pos = %d\n", target->pos, pos);
 			free((*best_element)->target);
 			(*best_element)->element = stack_a;
 			(*best_element)->pos = pos;
@@ -80,8 +74,13 @@ t_best_e	*get_best_element(t_list *stack_a, t_list *stack_b)
 	best_element->target = malloc(sizeof(t_element));
 	if (!best_element->target)
 		return (free(best_element), NULL);
-	best_element->cost = INT_MAX;
+	best_element->cost = -1;
 	if (iter_stack(&best_element, stack_a, stack_b, ft_lstsize(stack_a)))
 		return (free(best_element->target), free(best_element), NULL);
+	ft_lstiter(stack_b, &ft_putnbr);
+	write(1, "\n", 1);
+	ft_lstiter(stack_a, &ft_putnbr);
+	write(1, "\n", 1);
+	printf("element content : %d\npos : %d\ntarget content : %d\ntarget pos : %d\n", best_element->element->content, best_element->pos, best_element->target->element->content, best_element->target->pos);
 	return (best_element);
 }

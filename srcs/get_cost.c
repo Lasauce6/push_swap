@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:36:25 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/10 14:38:19 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:26:17 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,9 @@ int	get_cost(int t_pos, int e_pos, int size_a, int size_b)
 			cost++;
 		return (cost + 1);
 	}
-	else if (t_pos <= size_b / 2 && e_pos > size_a / 2)
-	{
-		while (t_pos-- > 0)
-			cost++;
-		while (e_pos++ <= size_a)
-			cost++;
-		return (cost + 1);
-	}
-	return (INT_MAX);
+	while (t_pos-- > 0)
+		cost++;
+	while (e_pos++ <= size_a)
+		cost++;
+	return (cost + 1);
 }

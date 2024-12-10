@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:03:08 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/10 13:06:25 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:26:12 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,12 @@ typedef struct s_best_e
 	t_element	*target;
 }	t_best_e;
 
-void		ft_putnbr(int n);
-
 // Operations
 int			swap(t_list **stack, char flag);
 int			push(t_list **stack_to, t_list **stack_from, char flag);
 int			rotate(t_list **stack, char flag);
 int			reverse_rotate(t_list **stack, char flag);
+
 // Operations 2
 int			swap_both(t_list **stack_a, t_list **stack_b);
 int			rotate_both(t_list **stack_a, t_list **stack_b);
@@ -69,6 +68,7 @@ t_best_e	*get_best_element(t_list *stack_a, t_list *stack_b);
 int			get_cost(int t_pos, int e_pos, int size_a, int size_b);
 
 // Utils
+void		ft_putnbr(int n);
 t_element	*get_stack_max(t_list *stack);
 t_element	*get_stack_min(t_list *stack);
 t_element	*get_e_above(int val, t_list *stack);
