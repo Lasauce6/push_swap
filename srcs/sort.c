@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:47:22 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/10 15:18:49 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/12 14:56:05 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,9 @@ static int	sort_more_elements(t_list **stack_a, t_list **stack_b)
 		if (!element)
 			return (1);
 		push_to_b(stack_a, stack_b, element);
-		free(element->target);
 		free(element);
 	}
-	// TODO: push back to a
+	push_back_to_a(stack_a, stack_b);
 	return (0);
 }
 

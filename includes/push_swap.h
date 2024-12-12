@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:03:08 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/10 16:26:12 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/12 12:22:03 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ typedef struct s_element
 
 typedef struct s_best_e
 {
-	int			cost;
-	int			pos;
-	t_list		*element;
-	t_element	*target;
+	int	pos;
+	int	val;
+	int	pos_target;
+	int	val_target;
+	int	cost;
 }	t_best_e;
 
 // Operations
@@ -59,13 +60,10 @@ int			sort_stacks(t_list **stack_a, t_list **stack_b);
 
 // Push elements
 int			push_to_b(t_list **stack_a, t_list **stack_b, t_best_e *e);
+int			push_back_to_a(t_list **stack_a, t_list **stack_b);
 
 // Best_element
-t_element	*get_target(int val_a, t_list *stack_b);
 t_best_e	*get_best_element(t_list *stack_a, t_list *stack_b);
-
-// Get cost
-int			get_cost(int t_pos, int e_pos, int size_a, int size_b);
 
 // Utils
 void		ft_putnbr(int n);

@@ -6,7 +6,7 @@
 #    By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/23 12:36:49 by rbaticle          #+#    #+#              #
-#    Updated: 2024/12/10 12:43:51 by rbaticle         ###   ########.fr        #
+#    Updated: 2024/12/12 12:11:49 by rbaticle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC_DIR = ./srcs/
 HEADER_DIR = ./includes/
 SRCS_NAMES = utils.c utils_2.c push_elements.c \
 	   operations.c operations_2.c best_element.c \
-	   sort.c get_cost.c
+	   sort.c
 SRCS = main.c $(addprefix $(SRC_DIR), $(SRCS_NAMES))
 OBJS = $(SRCS:.c=.o)
 
