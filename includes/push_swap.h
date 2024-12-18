@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:03:08 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/18 12:36:11 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/18 13:38:14 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ t_element	*get_e_bellow(int val, t_list *stack);
 int			get_stack_max_pos(t_list *stack);
 int			get_stack_min_pos(t_list *stack);
 int			is_sorted(t_list *stack);
-int			is_rev_sorted(t_list *stack);
 int			ft_max(int a, int b);
+void		free_argv(char **argv);
 
 // Get Mediane
 int			get_mediane(t_list *stack);

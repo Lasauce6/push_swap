@@ -6,7 +6,7 @@
 #    By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/23 12:36:49 by rbaticle          #+#    #+#              #
-#    Updated: 2024/12/18 13:06:20 by rbaticle         ###   ########.fr        #
+#    Updated: 2024/12/18 13:42:31 by rbaticle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,10 @@ $(LFT):
 $(NAME): $(LFT) $(OBJS)
 	$(CC) $(CFLAGS) -I $(HEADER_DIR) $(OBJS) -L $(LFT_DIR) -lft -o $(NAME)
 
-debug: makelft
+debug: $(LFT)
 	$(CC) $(CFLAGS) -I $(HEADER_DIR) -g $(SRCS) -L $(LFT_DIR) -lft -o $(NAME)
 
-fsanitize: makelft
+fsanitize: $(LFT)
 	$(CC) $(CFLAGS) -I $(HEADER_DIR) -fsanitize=address -g $(SRCS) $(LFT) -o $(NAME)
 
 clean: 

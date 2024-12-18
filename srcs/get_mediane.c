@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:17:49 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/18 10:07:40 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/18 13:47:36 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ int	get_mediane(t_list *stack)
 			}
 		}
 	}
-	return (free(tab), tab[ft_lstsize(stack) / 2]);
+	tmp = tab[ft_lstsize(stack) / 2];
+	return (free(tab), tmp);
 }

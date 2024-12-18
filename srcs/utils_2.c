@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 10:48:18 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/18 12:38:16 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/18 13:37:51 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,14 @@ int	ft_max(int a, int b)
 	if (a > b)
 		return (a);
 	return (b);
+}
+
+void	free_argv(char **argv)
+{
+	int	i;
+
+	i = -1;
+	while (argv[++i])
+		free(argv[i]);
+	free(argv);
 }
