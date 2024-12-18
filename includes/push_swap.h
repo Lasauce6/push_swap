@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:03:08 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/18 13:38:14 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/18 14:00:36 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,7 @@ void		free_argv(char **argv);
 
 // Get Mediane
 int			get_mediane(t_list *stack);
+
+// Parsing
+int			parse_input(char **argv, int argc, t_list **stack_a);
 #endif
