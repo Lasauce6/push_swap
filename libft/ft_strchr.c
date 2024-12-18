@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 16:23:09 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/09/25 19:09:49 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/18 15:22:55 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,16 @@ char	*ft_strchr(const char *s, int c)
 	size_t	i;
 
 	ch = (char) c;
-	i = -1;
-	while (s[++i])
+	if (s)
 	{
-		if (s[i] == ch)
+		i = -1;
+		while (s[++i])
+		{
+			if (s[i] == ch)
+				return ((char *) &s[i]);
+		}
+		if (ch == '\0')
 			return ((char *) &s[i]);
 	}
-	if (ch == '\0')
-		return ((char *) &s[i]);
 	return (0);
 }

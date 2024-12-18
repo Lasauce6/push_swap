@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:20:40 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/18 12:37:41 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/18 14:36:37 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	push_to_b_t_e_above_size(t_list **stack_a, t_list **stack_b,
 	{
 		e->pos_target++;
 		e->pos++;
-		reverse_rotate_both(stack_b, stack_a);
+		reverse_rotate_both(stack_b, stack_a, PRINT);
 	}
 	while (e->pos_target++ < size_a)
 		reverse_rotate(stack_a, PRINT_A);
@@ -39,7 +39,7 @@ static void	push_to_b_t_e_bellow_size(t_list **stack_a, t_list **stack_b,
 	{
 		e->pos_target--;
 		e->pos--;
-		rotate_both(stack_b, stack_a);
+		rotate_both(stack_b, stack_a, PRINT);
 	}
 	while (e->pos_target-- > 0)
 		rotate(stack_a, PRINT_A);

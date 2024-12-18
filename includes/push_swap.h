@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:03:08 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/18 14:00:36 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/18 14:35:55 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define NO_PRINT '0'
 # define PRINT_A 'a'
 # define PRINT_B 'b'
+# define PRINT '1'
 # define SWAP 1
 # define PUSH 2
 # define ROTATE 3
@@ -51,9 +52,9 @@ int			rotate(t_list **stack, char flag);
 int			reverse_rotate(t_list **stack, char flag);
 
 // Operations 2
-int			swap_both(t_list **stack_a, t_list **stack_b);
-int			rotate_both(t_list **stack_a, t_list **stack_b);
-int			reverse_rotate_both(t_list **stack_a, t_list **stack_b);
+int			swap_both(t_list **stack_a, t_list **stack_b, int flag);
+int			rotate_both(t_list **stack_a, t_list **stack_b, int flag);
+int			reverse_rotate_both(t_list **stack_a, t_list **stack_b, int flag);
 
 // Sort
 int			sort_stacks(t_list **stack_a, t_list **stack_b);

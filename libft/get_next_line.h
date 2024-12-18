@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 15:34:37 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/18 15:23:50 by rbaticle         ###   ########.fr       */
+/*   Created: 2024/10/16 21:01:38 by rbaticle          #+#    #+#             */
+/*   Updated: 2024/12/18 14:54:37 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*str;
-	size_t	i;
-	size_t	c;
+# include <unistd.h>
+# include <stdlib.h>
 
-	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!str)
-		return (0);
-	c = 0;
-	i = 0;
-	if (s1)
-	{
-		while (s1[i])
-			str[c++] = s1[i++];
-	}
-	i = 0;
-	if (s2)
-	{
-		while (s2[i])
-			str[c++] = s2[i++];
-	}
-	str[c] = '\0';
-	return (str);
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
+
+char	*get_next_line(int fd);
+size_t	ft_strlen(const char *c);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strchr(const char *s, int c);
+
+#endif

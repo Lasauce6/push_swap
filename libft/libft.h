@@ -6,13 +6,14 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:54:13 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/18 10:07:47 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/18 14:23:26 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include "get_next_line.h"
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>

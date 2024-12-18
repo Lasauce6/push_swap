@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:59:52 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/18 14:06:39 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/18 15:40:40 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,22 @@ static int	check_argv(char **argv, t_list **stack_a)
 	{
 		if (ft_strlen(argv[i]) > 11 || ft_strlen(argv[i]) == 0
 			|| (ft_strlen(argv[i]) > 10 && ft_isdigit(argv[i][0])))
-			return (0);
+			return (1);
 		j = -1;
 		if (argv[i][0] == '-' || argv[i][0] == '+')
 			j++;
 		while (argv[i][++j])
 		{
 			if (!ft_isdigit(argv[i][j]))
-				return (0);
+				return (1);
 		}
 		if ((argv[i][0] == '-' && ft_atoi(argv[i]) >= 0)
 			|| (argv[i][0] != '-' && ft_atoi(argv[i]) < 0))
-			return (0);
+			return (1);
 		if (add_to_stack(ft_atoi(argv[i]), stack_a))
-			return (0);
+			return (1);
 	}
-	return (i);
+	return (0);
 }
 
 static int	check_dups(t_list *stack_a)
@@ -86,7 +86,7 @@ int	parse_input(char **argv, int argc, t_list **stack_a)
 		argv = ft_split(argv[0], ' ');
 	if (!argv)
 		return (1);
-	if (check_argv(argv, stack_a) != argc - 1)
+	if (check_argv(argv, stack_a))
 	{
 		if (argc == 2)
 			free_argv(argv);

@@ -6,7 +6,7 @@
 #    By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/24 09:46:20 by rbaticle          #+#    #+#              #
-#    Updated: 2024/10/14 13:30:42 by rbaticle         ###   ########.fr        #
+#    Updated: 2024/12/18 14:55:26 by rbaticle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJS = $(SRCS:.c=.o)
 
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 		ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
-		ft_lstclear.c ft_lstiter.c ft_lstmap.c
+		ft_lstclear.c ft_lstiter.c ft_lstmap.c get_next_line.c
 OBJS_BONUS = $(BONUS:.c=.o)
 
 all: $(NAME)
