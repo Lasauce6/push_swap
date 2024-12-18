@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 12:20:40 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/12 13:20:57 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/18 12:37:41 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ static void	push_to_b_t_e_above_size(t_list **stack_a, t_list **stack_b,
 
 	size_a = ft_lstsize(*stack_a);
 	size_b = ft_lstsize(*stack_b);
-	while (e->pos_target < size_b && e->pos < size_a)
+	while (e->pos_target < size_a && e->pos < size_b)
 	{
 		e->pos_target++;
 		e->pos++;
-		reverse_rotate_both(stack_a, stack_b);
+		reverse_rotate_both(stack_b, stack_a);
 	}
-	while (e->pos_target++ < size_b)
-		reverse_rotate(stack_b, PRINT_B);
-	while (e->pos++ < size_a)
+	while (e->pos_target++ < size_a)
 		reverse_rotate(stack_a, PRINT_A);
+	while (e->pos++ < size_b)
+		reverse_rotate(stack_b, PRINT_B);
 }
 
 static void	push_to_b_t_e_bellow_size(t_list **stack_a, t_list **stack_b,
@@ -39,64 +39,69 @@ static void	push_to_b_t_e_bellow_size(t_list **stack_a, t_list **stack_b,
 	{
 		e->pos_target--;
 		e->pos--;
-		rotate_both(stack_a, stack_b);
+		rotate_both(stack_b, stack_a);
 	}
 	while (e->pos_target-- > 0)
-		rotate(stack_b, PRINT_B);
-	while (e->pos-- > 0)
 		rotate(stack_a, PRINT_A);
+	while (e->pos-- > 0)
+		rotate(stack_b, PRINT_B);
 }
 
-int	push_to_b(t_list **stack_a, t_list **stack_b, t_best_e *e)
+int	push_to_a(t_list **stack_a, t_list **stack_b, t_best_e *e)
 {
 	int	size_a;
 	int	size_b;
 
 	size_a = ft_lstsize(*stack_a);
 	size_b = ft_lstsize(*stack_b);
-	if (e->pos_target > size_b / 2 && e->pos > size_a / 2)
+	if (e->pos_target > size_a / 2 && e->pos > size_b / 2)
 		push_to_b_t_e_above_size(stack_a, stack_b, e);
-	else if (e->pos_target <= size_b / 2 && e->pos <= size_a / 2)
+	else if (e->pos_target <= size_a / 2 && e->pos <= size_b / 2)
 		push_to_b_t_e_bellow_size(stack_a, stack_b, e);
-	else if (e->pos_target > size_b / 2 && e->pos <= size_b / 2)
+	else if (e->pos_target > size_a / 2 && e->pos <= size_b / 2)
 	{
-		while (e->pos_target++ < size_b)
-			reverse_rotate(stack_b, PRINT_B);
+		while (e->pos_target++ < size_a)
+			reverse_rotate(stack_a, PRINT_A);
 		while (e->pos-- > 0)
-			rotate(stack_a, PRINT_A);
+			rotate(stack_b, PRINT_B);
 	}
 	else
 	{
 		while (e->pos_target-- > 0)
-			rotate(stack_b, PRINT_B);
-		while (e->pos++ < size_a)
-			reverse_rotate(stack_a, PRINT_A);
+			rotate(stack_a, PRINT_A);
+		while (e->pos++ < size_b)
+			reverse_rotate(stack_b, PRINT_B);
 	}
-	push(stack_b, stack_a, PRINT_B);
+	push(stack_a, stack_b, PRINT_A);
 	return (0);
 }
 
-int	push_back_to_a(t_list **stack_a, t_list **stack_b)
+int	push_to_b(t_list **stack_a, t_list **stack_b, int mediane)
 {
-	t_element	*e_max;
-	int			size_b;
-
-	e_max = get_stack_max(*stack_b);
-	if (!e_max)
-		return (1);
-	size_b = ft_lstsize(*stack_b);
-	if (e_max->pos > size_b / 2)
+	while (ft_lstsize(*stack_a) > 3)
 	{
-		while (e_max->pos-- > 0)
+		if ((*stack_a)->content < mediane)
+		{
+			push(stack_b, stack_a, PRINT_B);
 			rotate(stack_b, PRINT_B);
+		}
+		else
+			push(stack_b, stack_a, PRINT_B);
+	}
+	return (0);
+}
+
+int	rotate_a(t_list **stack_a)
+{
+	if (get_stack_min_pos(*stack_a) > ft_lstsize(*stack_a) / 2)
+	{
+		while (get_stack_min_pos(*stack_a) != 0)
+			reverse_rotate(stack_a, PRINT_A);
 	}
 	else
 	{
-		while (e_max->pos++ < size_b)
-			reverse_rotate(stack_b, PRINT_B);
+		while (get_stack_min_pos(*stack_a) != 0)
+			rotate(stack_a, PRINT_A);
 	}
-	while (*stack_b)
-		push(stack_a, stack_b, PRINT_A);
-	free(e_max);
 	return (0);
 }

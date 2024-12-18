@@ -6,13 +6,13 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:00:38 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/12 12:23:44 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/18 12:51:14 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-int	add_to_stack(int element, t_list **stack)
+static int	add_to_stack(int element, t_list **stack)
 {
 	t_list	*tmp;
 
@@ -32,7 +32,7 @@ int	add_to_stack(int element, t_list **stack)
 	return (0);
 }
 
-int	parse_input(char **argv, t_list **stack_a)
+static int	check_argv(char **argv, t_list **stack_a)
 {
 	int	i;
 	int	j;
@@ -56,6 +56,30 @@ int	parse_input(char **argv, t_list **stack_a)
 			return (1);
 		if (add_to_stack(ft_atoi(argv[i]), stack_a))
 			return (1);
+	}
+	return (0);
+}
+
+static int	parse_input(char **argv, int argc, t_list **stack_a)
+{
+	t_list	*stack_i;
+	t_list	*stack_j;
+
+	if (argc == 2)
+		argv = ft_split(argv[0], ' ');
+	if (check_argv(argv, stack_a))
+		return (1);
+	stack_i = *stack_a;
+	while (stack_i)
+	{
+		stack_j = stack_i->next;
+		while (stack_j)
+		{
+			if (stack_i->content == stack_j ->content)
+				return (1);
+			stack_j = stack_j->next;
+		}
+		stack_i = stack_i->next;
 	}
 	return (0);
 }
@@ -88,7 +112,7 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		argv[argc] = 0;
-		if (!parse_input(argv + 1, &stack_a))
+		if (!parse_input(argv + 1, argc, &stack_a))
 		{
 			if (sort_stacks(&stack_a, &stack_b))
 				ft_putstr_fd("Error\n", STDERR_FILENO);

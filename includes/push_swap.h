@@ -6,7 +6,7 @@
 /*   By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:03:08 by rbaticle          #+#    #+#             */
-/*   Updated: 2024/12/12 12:22:03 by rbaticle         ###   ########.fr       */
+/*   Updated: 2024/12/18 12:36:11 by rbaticle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,9 @@ int			reverse_rotate_both(t_list **stack_a, t_list **stack_b);
 int			sort_stacks(t_list **stack_a, t_list **stack_b);
 
 // Push elements
-int			push_to_b(t_list **stack_a, t_list **stack_b, t_best_e *e);
-int			push_back_to_a(t_list **stack_a, t_list **stack_b);
+int			push_to_b(t_list **stack_a, t_list **stack_b, int mediane);
+int			push_to_a(t_list **stack_a, t_list **stack_b, t_best_e *e);
+int			rotate_a(t_list **stack_a);
 
 // Best_element
 t_best_e	*get_best_element(t_list *stack_a, t_list *stack_b);
@@ -73,9 +74,12 @@ t_element	*get_e_above(int val, t_list *stack);
 t_element	*get_e_bellow(int val, t_list *stack);
 
 // Utils 2
-int			get_stack_max_pos(t_list **stack);
-int			get_stack_min_pos(t_list **stack);
+int			get_stack_max_pos(t_list *stack);
+int			get_stack_min_pos(t_list *stack);
 int			is_sorted(t_list *stack);
 int			is_rev_sorted(t_list *stack);
+int			ft_max(int a, int b);
 
+// Get Mediane
+int			get_mediane(t_list *stack);
 #endif

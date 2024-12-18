@@ -6,7 +6,7 @@
 #    By: rbaticle <rbaticle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/23 12:36:49 by rbaticle          #+#    #+#              #
-#    Updated: 2024/12/12 12:11:49 by rbaticle         ###   ########.fr        #
+#    Updated: 2024/12/18 13:06:20 by rbaticle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,20 +22,20 @@ SRC_DIR = ./srcs/
 HEADER_DIR = ./includes/
 SRCS_NAMES = utils.c utils_2.c push_elements.c \
 	   operations.c operations_2.c best_element.c \
-	   sort.c
+	   sort.c get_mediane.c
 SRCS = main.c $(addprefix $(SRC_DIR), $(SRCS_NAMES))
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-makelft:
+$(LFT):
 	@make -C $(LFT_DIR) bonus
 
-$(NAME): makelft $(OBJS)
-	$(CC) $(CFLAGS) -I $(HEADER_DIR) $(OBJS) $(LFT) -o $(NAME)
+$(NAME): $(LFT) $(OBJS)
+	$(CC) $(CFLAGS) -I $(HEADER_DIR) $(OBJS) -L $(LFT_DIR) -lft -o $(NAME)
 
 debug: makelft
-	$(CC) $(CFLAGS) -I $(HEADER_DIR) -g $(SRCS) $(LFT) -o $(NAME)
+	$(CC) $(CFLAGS) -I $(HEADER_DIR) -g $(SRCS) -L $(LFT_DIR) -lft -o $(NAME)
 
 fsanitize: makelft
 	$(CC) $(CFLAGS) -I $(HEADER_DIR) -fsanitize=address -g $(SRCS) $(LFT) -o $(NAME)
